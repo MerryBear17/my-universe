@@ -8,13 +8,16 @@ const music = document.getElementById("bgMusic");
 
 beginButton.addEventListener("click", () => {
 
-    intro.style.display = "none";
+    intro.classList.add("hidden");
+
+    letterSection.classList.remove("hidden");
     letterSection.style.display = "flex";
 
     if (music) {
         music.play().catch(() => {});
     }
 
+    typedLetter.innerHTML = "";
     typeLetter();
 });
 
@@ -23,13 +26,11 @@ function typeLetter() {
     let i = 0;
 
     function typing() {
-
         if (i < letter.length) {
             typedLetter.innerHTML += letter.charAt(i);
             i++;
             setTimeout(typing, 35);
         }
-
     }
 
     typing();
@@ -37,7 +38,9 @@ function typeLetter() {
 
 moonButton.addEventListener("click", () => {
 
-    letterSection.style.display = "none";
+    letterSection.classList.add("hidden");
+
+    ending.classList.remove("hidden");
     ending.style.display = "flex";
 
 });
