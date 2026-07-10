@@ -11,18 +11,21 @@ beginButton.addEventListener("click", () => {
     intro.style.display = "none";
     letterSection.style.display = "flex";
 
-   if (music) {
-    music.volume = 0.5; // 50% volume
-    music.play()
-        .then(() => console.log("Music started!"))
-        .catch(err => {
-            console.error("Music failed to play:", err);
-            alert("Music failed to play: " + err.message);
-        });
-}
+    if (music) {
+        music.volume = 0.5;
+
+        music.play()
+            .then(() => {
+                console.log("Music started!");
+            })
+            .catch(err => {
+                console.error("Music failed to play:", err);
+                alert("Music failed to play: " + err.message);
+            });
     }
 
     typeLetter();
+
 });
 
 function typeLetter() {
