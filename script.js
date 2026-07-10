@@ -8,38 +8,37 @@ const music = document.getElementById("bgMusic");
 
 beginButton.addEventListener("click", () => {
 
-    intro.style.display = "none";
-    letterSection.style.display = "flex";
+    // Hide intro
+    intro.classList.add("hidden");
 
+    // Show letter
+    letterSection.classList.remove("hidden");
+
+    // Play music
     if (music) {
         music.volume = 0.5;
-
-        music.play()
-            .then(() => {
-                console.log("Music started!");
-            })
-            .catch(err => {
-                console.error("Music failed to play:", err);
-                alert("Music failed to play: " + err.message);
-            });
+        music.play().catch(error => {
+            console.log(error);
+        });
     }
 
+    // Start typing
     typeLetter();
 
 });
 
 function typeLetter() {
 
+    typedLetter.innerHTML = "";
+
     let i = 0;
 
     function typing() {
-
         if (i < letter.length) {
             typedLetter.innerHTML += letter.charAt(i);
             i++;
             setTimeout(typing, 35);
         }
-
     }
 
     typing();
@@ -47,7 +46,7 @@ function typeLetter() {
 
 moonButton.addEventListener("click", () => {
 
-    letterSection.style.display = "none";
-    ending.style.display = "flex";
+    letterSection.classList.add("hidden");
+    ending.classList.remove("hidden");
 
 });
